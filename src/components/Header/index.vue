@@ -49,6 +49,8 @@ export default {
     methods: {
         goSearch(){
             this.$router.push('/search')
+
+            
         }
     },
   
