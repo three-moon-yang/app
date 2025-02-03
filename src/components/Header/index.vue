@@ -33,7 +33,7 @@
             </h1>
             <div class="searchArea">
                 <form action="###" class="searchForm">
-                    <input type="text" id="autocomplete" class="input-error input-xxlarge" />
+                    <input type="text" id="autocomplete" class="input-error input-xxlarge" v-model="keyword" />
                     <button class="sui-btn btn-xlarge btn-danger" type="button" @click="goSearch">搜索</button>
                 </form>
             </div>
@@ -45,12 +45,26 @@
 import Vue from 'vue'
 
 export default {
-    name:'Header',
+    name:'',
+    data() {
+        return {
+            keyword:''
+        }
+    },
+
     methods: {
         goSearch(){
-            this.$router.push('/search')
+            //字符串形式的传参
+            // this.$router.push('/search/'+ this.keyword + '?k=' +this.keyword.toUpperCase())
+            //模版字符串方式
+            // this.$router.push(`/search/${this.keyword}?k=${this.keyword.toUpperCase()}`)
+            // 对象写法
+            this.$router.push({
+                name:'search',params:{keyword:this.keyword},query:{k:this.keyword.toUpperCase()}
+            })
 
-            
+
+
         }
     },
   
